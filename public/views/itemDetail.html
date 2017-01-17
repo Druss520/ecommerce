@@ -1,0 +1,95 @@
+
+
+            <div id="itemDetail" class="container" ng-controller="itemDetailController" >
+                <div class="col-md-4 service-image-left">
+                            <img id="item-display" ng-src="{{itemDetails.img}}" alt="">
+                </div>
+
+                <div class="col-md-7">
+                    <div class="product-title">{{itemDetails.itemname}}</div>
+                    <div class="product-desc">{{itemDetails.description}}</div>
+                    <div class="product-seller">by <a>{{itemDetails.sellerName}}</a></div>
+                    <div class="product-rating">
+                        <p>
+                            <span class="glyphicon glyphicon-star gold"></span>
+                            <span class="glyphicon glyphicon-star gold"></span>
+                            <span class="glyphicon glyphicon-star gold"></span>
+                            <span class="glyphicon glyphicon-star gold"></span>
+                            <span class="glyphicon glyphicon-star-empty gold"></span>
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="product-price">${{itemDetails.price}}</div>
+                    <div ng-if="numLeft!=0">
+                        <div class="product-stock">In Stock</div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="number" min="1" max="{{numLeft}}" ng-model="createNewOrder.quantity" class="form-control" oninput="validity.valid||(value='');">
+                            </div>
+                            <div class="col-md-2">
+                                <p  style="font-size: 15px;margin: 6px 0">{{numLeft}} left</p>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="btn-group cart">
+                            <button type="button" class="btn btn-success" ng-click="addToCart()">
+                                <span class="glyphicon glyphicon-shopping-cart"></span>
+                                Add to cart
+                            </button>
+                        </div>
+                        <div class="btn-group wishlist">
+                            <button type="button" class="btn btn-default disabled">
+                                Add to wishlist
+                            </button>
+                        </div>
+                        <hr>
+
+                        <div class="alert alert-danger alert-dismissible hidden" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <strong>Warning!</strong> Not Enough Storage, please reload page to get new storage.
+                        </div>
+                    </div>
+                    <div ng-if="numLeft==0">
+                        <div class="product-stock" style="color: #b92c28">Out of Stock</div>
+                    </div>
+
+                </div>
+
+
+            <div class="col-md-12 product-info">
+                <ul id="myTab" class="nav nav-tabs nav_tabs">
+
+                    <li class="active my-tab"><a data-target="#service-one" data-toggle="tab">Description</a></li>
+                    <li class="my-tab"><a data-target="#service-two" data-toggle="tab">Detail Info</a></li>
+                    <li class="my-tab"><a data-target="#service-three" data-toggle="tab">Review</a></li>
+
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="service-one">
+                        <h4>Best Seller Item</h4>
+                        <hr>
+                        <section class="container product-info">
+                            <p>{{itemDetails.description}}</p>
+                        </section>
+
+                    </div>
+                    <div class="tab-pane fade" id="service-two">
+
+                        <section class="container">
+                            <hr>
+                            <ul>
+                                <li>producer: XXX Coop Ltd Company</li>
+                                <li>Size: 12 x 5 x 10</li>
+                                <li>Warranty: 1 year</li>
+                            </ul>
+                        </section>
+
+                    </div>
+                    <div class="tab-pane fade" id="service-three">
+
+                    </div>
+                </div>
+                <hr>
+            </div>
+            </div>

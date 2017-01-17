@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ShopIn! </title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+</head>
+<body ng-app="webapp">
+
+<div class="container" ng-controller="routeController">
+
+    <div ng-include="'/views/navBar.html'"></div>
+
+    <div ng-include="'/views/signPage.html'"></div>
+
+    <div ng-include="'/views/payment.html'"></div>
+
+    <div ui-view></div>
+
+    <div ng-include="'/views/cart.html'"></div>
+
+    <!--<div ng-include="'defaultList.html'"></div>-->
+
+
+</div>  <!-- controller scope -->
+
+<div class="container">
+
+    <hr>
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; ShopIn! 2016</p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+
+<script type="text/javascript" src="../lib/angular/angular.js"></script>
+<script type="text/javascript" src="../lib/angular-ui-router/release/angular-ui-router.js"></script>
+<script type="text/javascript" src="../lib/angular-bootstrap-multiselect/dist/angular-bootstrap-multiselect.js"></script>
+<script type="text/javascript" src="../lib/angular-animate/angular-animate.js"></script>
+<script type="text/javascript" src="../lib/angular-touch/angular-touch.js"></script>
+<script type="text/javascript" src="../lib/angular-sanitize/angular-sanitize.js"></script>
+<script type="text/javascript" src="../lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="../lib/ui-bootstrap-tpls-2.4.0.js"></script>
+<script type="text/javascript" src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="../webapp.js"></script>
+<script type="text/javascript" src="../javascripts/Providers/pagesRoute.js"></script>
+<script type="text/javascript" src="../javascripts/Services/routeService.js"></script>
+<script type="text/javascript" src="../javascripts/Controllers/routeController.js"></script>
+<script type="text/javascript" src="../javascripts/Controllers/LoadItemController.js"></script>
+<script type="text/javascript" src="../javascripts/Controllers/LoadItemByUser.js"></script>
+<script type="text/javascript" src="../javascripts/Controllers/operationItemController.js"></script>
+<script type="text/javascript" src="../javascripts/Controllers/itemDetailController.js"></script>
+<script type="text/javascript" src="../javascripts/Controllers/CartController.js"></script>
+<script type="text/javascript" src="../javascripts/Controllers/SearchController.js"></script>
+
+
+
+</body>
+</html>

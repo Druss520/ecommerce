@@ -1,0 +1,39 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand em-text" ui-sref="home" ng-click="checkvalidation()">ShopIn!</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search" ng-model="searchinfo.searchString">
+                    <button type="submit" class="btn btn-default" ng-click="startSearch()">Search Item</button>
+                </div>
+            </form>
+            <div ng-if="loginsucc">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="showsign()" id="signinup"> Sign In/Up</a></li>
+                </ul>
+            </div>
+            <div ng-if="!loginsucc">
+                <ul class="nav navbar-nav navbar-right">
+                    <!--<li><a href="#" ng-click="showsign()">Sign In/Up</a></li>-->
+                    <li><a data-toggle="modal" data-target="#modalCart" ng-click="checkvalidation()"><span class="glyphicon glyphicon-shopping-cart"> {{itemNum}}</span></a> </li>
+                    <li><a ui-sref="personal" ng-click="checkvalidation()">{{loginuser}}</a> </li>
+                    <li><a ng-click="signout111()">Sign Out</a> </li>
+                </ul>
+            </div>
+
+
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>

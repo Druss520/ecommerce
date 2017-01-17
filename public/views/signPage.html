@@ -1,0 +1,112 @@
+<div class="modal fade bs-modal-sm" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h5 >
+                    Welcome to <span class="em-text" style="font-size: 18px">ShopIn!</span>
+                </h5>
+            </div>
+            <div >
+                <ul id="myTab" class="nav nav-tabs">
+                    <li class="active"><a data-target="#signin" data-toggle="tab">SignIn</a></li>
+                    <li class=""><a data-target="#signup" data-toggle="tab">SignUp</a></li>
+                </ul>
+            </div>
+            <div class="modal-body">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade active in" id="signin">
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <!-- Sign In Form -->
+                                <!-- Text input-->
+                                <div class="control-group">
+                                    <label class="control-label" for="userid">User:</label>
+                                    <div class="controls">
+                                        <input  name="userid" type="text" class="form-control input-medium" ng-model="signininfo.username" placeholder="Username" >
+                                    </div>
+                                </div>
+
+                                <!-- Password input-->
+                                <div class="control-group">
+                                    <label class="control-label" for="passwordinput">Password:</label>
+                                    <div class="controls">
+                                        <input  id="passwordinput" name="passwordinput"
+                                                class="form-control input-medium" ng-model="signininfo.password" type="password">
+                                    </div>
+                                </div>
+
+                                <!-- Button -->
+                                <div class="control-group">
+                                    <label class="control-label" for="signin"></label>
+                                    <div class="controls">
+                                        <button  name="signin" class="btn btn-success" ng-click="signin111()">Sign In</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade" id="signup">
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <!-- Sign Up Form -->
+                                <!-- Text input-->
+                                <div class="control-group">
+                                    <label class="control-label" for="Email">Email:</label>
+                                    <div class="controls">
+                                        <input id="Email" name="Email" class="form-control input-large" type="text"  ng-model="signupinfo.email" >
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="control-group">
+                                    <label class="control-label" for="userid">User</label>
+                                    <div class="controls">
+                                        <input id="userid" name="userid" class="form-control input-large"
+                                               type="text" ng-model="signupinfo.username" placeholder="Username" >
+                                    </div>
+                                </div>
+
+                                <!-- Password input-->
+                                <div class="control-group">
+                                    <label class="control-label" for="password">Password:</label>
+                                    <div class="controls">
+                                        <input id="password" name="password" class="form-control input-large"
+                                               type="password" ng-model="signupinfo.password" placeholder=""  >
+                                        <em>6-14 Characters</em>
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="control-group">
+                                    <label class="control-label" for="reenterpassword">Re-Enter Password:</label>
+                                    <div class="controls">
+                                        <input id="reenterpassword" class="form-control input-large" name="reenterpassword"
+                                               type="password" ng-model="checkpassword.repassword" placeholder=""  >
+                                    </div>
+                                </div>
+
+                                <!-- Button -->
+                                <div class="control-group">
+                                    <label class="control-label" for="confirmsignup"></label>
+                                    <div class="controls">
+                                        <button id="confirmsignup" name="confirmsignup" ng-click="signup111()" class="btn btn-success">Sign Up</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <center>
+                    <div ng-show="hehe1" class="alert alert-danger" ng-bind="hehe1" id="alert-msg">
+
+                    </div>
+                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                </center>
+            </div>
+        </div>
+    </div>
+</div>

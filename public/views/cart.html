@@ -1,0 +1,107 @@
+
+
+<div id="modalCart" class="modal fade" role="dialog" ng-controller="CartController">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{loginuser}}'s Shopping Cart</h4>
+            </div>
+            <div class="modal-body">
+
+                <div ng-if="!emptyCart">
+
+                <div class="container" style="width: 100%">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <table class="table table-hover table-responsive">
+                            <thead>
+                            <tr>
+                                <th class="col-sm-8 col-md-8 col-lg-8">Product</th>
+                                <th class="col-sm-1 col-md-1 ">Quantity</th>
+                                <th class="text-center col-sm-1 col-md-1">Price</th>
+                                <th class="text-center col-sm-1 col-md-1">Total</th>
+                                <th class="col-sm-1 col-md-1"> </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="order in cartItems track by $index">
+                                <td >
+                                    <div class="media">
+                                        <a class="thumbnail pull-left" > <img class="media-object" ng-src="{{order.img}}" style=" width: 72px; height: 72px;"> </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><a ng-click="jumpToDetail(order._id)">{{order.itemname}}</a></h4>
+                                            <h5 class="media-heading"> by <a >{{order.sellerName}}</a></h5>
+                                            <!--<span>Status: </span><span class="text-success"><strong>In Stock</strong></span>-->
+                                        </div>
+                                    </div>
+                                </td>
+                                <td  style="text-align: center">
+                                    <input type="number" min="0"  class="form-control" oninput="validity.valid||(value='');" ng-model="orderList[$index].quantity">
+                                </td>
+                                <td class="text-center"><strong>${{order.price}}</strong></td>
+                                <td class="text-center"><strong>${{(order.price*orderList[$index].quantity).toFixed(2)}}</strong></td>
+                                <td >
+                                    <button type="button" class="btn btn-default" ng-click="deleteOrder(orderList[$index])">
+                                        <span class="glyphicon glyphicon-remove"></span> Remove
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td><h5>Subtotal
+                                        <br>
+                                        Estimated shipping
+                                    </h5>
+                                    <h3>Total</h3>
+                                </td>
+                                <td class="text-right">
+                                    <h5><strong >
+                                        ${{subtotal.toFixed(2)}}
+                                        <br>
+                                        ${{shippingFee}}</strong>
+                                    </h5>
+                                    <h3>${{(subtotal+shippingFee).toFixed(2)}}</h3></td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>
+                                    <button type="button" class="btn btn-default" ng-click="continueShopping()">
+                                        <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                                    </button></td>
+                                <td>
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#payment-page" ng-click="pay()">
+                                        Checkout <span class="glyphicon glyphicon-play"></span>
+                                    </button></td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                </div>
+
+                </div>
+                <div ng-if="emptyCart" class="text-center">
+
+                    <h2 class="text-center">Your Shopping Cart is Empty</h2>
+                    <hr>
+
+                    <button type="button" class="btn btn-default" ng-click="continueShopping()">
+                        <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

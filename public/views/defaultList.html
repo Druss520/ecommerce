@@ -1,0 +1,90 @@
+<div class="container" ng-controller="LoadItemController">
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <p class="lead">Category List</p>
+            <div class="list-group ">
+                <a class="list-group-item category-group" ng-click="hehe()">Show All</a>
+                <a class="list-group-item category-group" ng-click="changeCategory('Digital')" >Digital</a>
+                <a class="list-group-item category-group" ng-click="changeCategory('Outdoor')" >Outdoor</a>
+                <a class="list-group-item category-group" ng-click="changeCategory('Food')" >Food</a>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+
+            <div class="row carousel-holder">
+
+                <div class="col-md-12">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic"  data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic"  data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic"  data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <img class="slide-image d-block img-fluid" ui-sref="itemDetail({itemId:'586f0896868b7c06be3c3b30'})" ng-click="sendItemId('586f0896868b7c06be3c3b30')" ng-src="http://assets2.lionseek.com/item/watches/medium_74160691-fs-seiko-slr001-perpetual-monster-8f35.jpg" alt="">
+                            </div>
+                            <div class="item ">
+                                <img class="slide-image d-block img-fluid" ui-sref="itemDetail({itemId:'586f08d6868b7c06be3c3b31'})" ng-click="sendItemId('586f08d6868b7c06be3c3b31')" ng-src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/X_Box_One_(white)_logo.svg/1280px-X_Box_One_(white)_logo.svg.png" alt="">
+                            </div>
+                            <div class="item ">
+                                <img class="slide-image d-block img-fluid" ui-sref="itemDetail({itemId:'586f08ec868b7c06be3c3b32'})" ng-click="sendItemId('586f08ec868b7c06be3c3b32')" ng-src="http://www.passionforsavings.com/content/uploads/2015/10/facebook-header-2016.jpg" alt="">
+                            </div>
+                        </div>
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row item-control" style="height: 630px">
+
+
+                <div class="col-sm-4 col-lg-4 col-md-4" ng-repeat="oneitem in allItems">
+                    <div class="thumbnail">
+                        <img id="default-img" ng-src="{{oneitem.img}}" ui-sref="itemDetail({itemId:oneitem._id})" ng-click="sendItemId(oneitem._id)" alt="">
+                        <div class="caption">
+                            <h5><a ui-sref="itemDetail({itemId:oneitem._id})" ng-click="sendItemId(oneitem._id)">{{oneitem.itemname}}</a></h5>
+                            <div class="row">
+                                <h5 class="col-sm-4">${{oneitem.price}}</h5>
+                                <h5 class="col-sm-8 ">
+                                    by {{oneitem.sellerName}}
+                                </h5>
+                                <p class="col-sm-12">{{oneitem.description}}</p>
+                            </div>
+                        </div>
+                        <div class="ratings">
+                            <p class="pull-right">18 reviews</p>
+                            <p>
+                                <span class="glyphicon glyphicon-star gold"></span>
+                                <span class="glyphicon glyphicon-star gold"></span>
+                                <span class="glyphicon glyphicon-star gold"></span>
+                                <span class="glyphicon glyphicon-star gold"></span>
+                                <span class="glyphicon glyphicon-star-empty gold"></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="container col-md-12 col-sm-12 text-center">
+                <ul uib-pagination items-per-page="ItemPage.pagesize" total-items="totalPageItems" ng-click="changePage()"
+                    ng-model="ItemPage.pagestart" max-size="ItemPage.maxSize" class="pagination" boundary-link-numbers="true"></ul>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,41 @@
+<div class="container" ng-controller="SearchController">
+
+    <div class="row item-control" style="height: 582px">
+
+
+        <div class="col-sm-4 col-lg-4 col-md-4" ng-repeat="oneitem in allItems">
+            <div class="thumbnail">
+                <img id="default-img" ng-src="{{oneitem.img}}" ui-sref="itemDetail({itemId:oneitem._id})" ng-click="sendItemId(oneitem._id)" alt="">
+                <div class="caption">
+                    <h5><a ui-sref="itemDetail({itemId:oneitem._id})" ng-click="sendItemId(oneitem._id)">{{oneitem.itemname}}</a></h5>
+                    <div class="row">
+                        <h5 class="col-sm-4">${{oneitem.price}}</h5>
+                        <h5 class="col-sm-8 ">
+                            by {{oneitem.sellerName}}
+                        </h5>
+                        <p class="col-sm-12">{{oneitem.description}}</p>
+                    </div>
+                </div>
+                <div class="ratings">
+                    <p class="pull-right">18 reviews</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star gold"></span>
+                        <span class="glyphicon glyphicon-star gold"></span>
+                        <span class="glyphicon glyphicon-star gold"></span>
+                        <span class="glyphicon glyphicon-star gold"></span>
+                        <span class="glyphicon glyphicon-star-empty gold"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="container col-md-12 col-sm-12 text-center">
+        <ul uib-pagination items-per-page="ItemPage.pagesize" total-items="totalPageItems" ng-click="changePage()"
+            ng-model="ItemPage.pagestart" max-size="ItemPage.maxSize" class="pagination" boundary-link-numbers="true"></ul>
+    </div>
+
+</div>
+

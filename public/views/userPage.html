@@ -1,0 +1,79 @@
+<div class="container">
+
+    <div class="jumbotron">
+        <h2>Hello, {{loginuser}}</h2>
+        <p>You can create your items for sell and build your own business</p>
+        <p><a class="btn btn-success btn-lg" role="button" data-toggle="modal" ng-click="checkvalidation()" data-target="#createItem">Start to Sell</a></p>
+    </div>
+
+    <div class="jumbotron" ng-controller="LoadItemByUser">
+        <h3>Your Business</h3>
+        <ul class="list-group">
+            <li class="list-group-item clearfix" ng-repeat="onSellItem in allItemsfromUser">
+                <div class="rows">
+                    <a class="col-lg-10">{{onSellItem.itemname}}</a>
+                    <button class="btn btn-default col-lg-2 pull-right" ng-click="deleteItem(onSellItem._id)">Off Sale</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="jumbotron">
+        <h3>Your Paid Orders</h3>
+        <ul class="list-group">
+            <li class="list-group-item">Order 1</li>
+            <li class="list-group-item">Order 2</li>
+        </ul>
+    </div>
+</div>
+
+<div class="modal fade" id="createItem" ng-controller="operationItemController" role="dialog">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">Create Sell Item</h3>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-sm-7">
+                        <label for="itemname">Item Name:</label>
+                        <input type="text" class="form-control" id="itemname" ng-model="iteminfo.itemname" required="">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="price">Price:</label>
+                        <input type="number" class="form-control" id="price" ng-model="iteminfo.price" min="0" required="">
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="Number">Quantity:</label>
+                        <input type="number" class="form-control" id="Number" min="1" oninput="validity.valid||(value='');" ng-model="iteminfo.totalNum">
+                    </div>
+                    <div class="form-group col-sm-9">
+                        <label for="imgurl">Img Url</label>
+                        <input type="text" class="form-control" id="imgurl" ng-model="iteminfo.img">
+                    </div>
+
+                    <div class="form-group col-sm-3">
+                        <label for="itemCatetory">Category</label>
+                        <multiselect ng-model="iteminfo.category" options="options" id="itemCatetory" required="">
+                        </multiselect>
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <label for="itemDescription">Description</label>
+                        <textarea class="form-control" rows="2" id="itemDescription" placeholder="give detail info for your item" ng-model="iteminfo.description"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="toCreateItem()">Click to Sell</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

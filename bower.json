@@ -1,0 +1,23 @@
+{
+  "name": "ecommerce",
+  "description": "ecom",
+  "main": "bin/www",
+  "authors": [
+    "Lizhuo Yang <druss520@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "ecom"
+  ],
+  "homepage": "mall.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular-bootstrap-multiselect": "https://github.com/bentorfs/angular-bootstrap-multiselect.git#^1.1.6"
+  }
+}
