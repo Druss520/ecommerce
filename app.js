@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var config = require('config-lite');
+var winston = require('winston');
+var expressWinston = require('express-winston');
 
 var mongoose = require("./DAO/mongoose.js");
 
@@ -37,7 +39,30 @@ app.use(session({
   })
 }));
 
+
+app.use(expressWinston.logger({
+  transports:[
+      // new (winston.transports.Console)({
+      //   json:true,
+      //   colorize:true
+      // }),
+      new winston.transports.File({
+        filename:'logs/success.log'
+      })
+  ]
+}));
 route(app);
+app.use(expressWinston.errorLogger({
+  transports: [
+    // new winston.transports.Console({
+    //   json: true,
+    //   colorize: true
+    // }),
+    new winston.transports.File({
+      filename: 'logs/error.log'
+    })
+  ]
+}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
