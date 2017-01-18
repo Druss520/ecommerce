@@ -17,32 +17,36 @@ var cluster = require('cluster');
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+if(module.parent){
+  module.exports = app;
+}
+else {
+  if (cluster.isMaster) {
+    var numWorkers = require('os').cpus().length;
 
-if(cluster.isMaster) {
-  var numWorkers = require('os').cpus().length;
+    console.log('Master cluster setting up ' + numWorkers + ' workers...');
 
-  console.log('Master cluster setting up ' + numWorkers + ' workers...');
+    for (var i = 0; i < numWorkers; i++) {
+      cluster.fork();
+    }
 
-  for(var i = 0; i < numWorkers; i++) {
-    cluster.fork();
+    cluster.on('online', function (worker) {
+      console.log('Worker ' + worker.process.pid + ' is online');
+    });
+
+    cluster.on('exit', function (worker, code, signal) {
+      console.log('Worker ' + worker.process.pid + ' died with code: ' + code + ', and signal: ' + signal);
+      console.log('Starting a new worker');
+      cluster.fork();
+    });
+  } else {
+
+    var server = http.createServer(app);
+
+    server.listen(port);
+    server.on('error', onError);
+    server.on('listening', onListening);
   }
-
-  cluster.on('online', function(worker) {
-    console.log('Worker ' + worker.process.pid + ' is online');
-  });
-
-  cluster.on('exit', function(worker, code, signal) {
-    console.log('Worker ' + worker.process.pid + ' died with code: ' + code + ', and signal: ' + signal);
-    console.log('Starting a new worker');
-    cluster.fork();
-  });
-} else {
-
-  var server = http.createServer(app);
-
-  server.listen(port);
-  server.on('error', onError);
-  server.on('listening', onListening);
 }
 
 

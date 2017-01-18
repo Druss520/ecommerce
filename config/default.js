@@ -8,5 +8,6 @@ module.exports={
         secret:"lizhuo",
         maxAge:900*1000
     },
-    dbpath:"mongodb://localhost:27017/ecom"
+    // dbpath:"mongodb://localhost:27017/ecom"
+    dbpath:"mongodb://lizhuo:666666@ds117829.mlab.com:17829/lizhuos"
 };
