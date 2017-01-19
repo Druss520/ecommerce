@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "test": "mocha --harmony test",
-    "start": "node ./bin/www"
+    "start": "NODE_ENV=production pm2 start ./bin/www --node-args='--harmony' --name 'ShopIn'"
+//    "start": "node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.15.2",
